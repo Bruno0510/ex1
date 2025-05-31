@@ -6,89 +6,94 @@
 #define MAX_NOME 100
 #define MAX_FAVORITOS 10
 
+// Estruturas
 typedef struct {
     int id;
     char titulo[MAX_TITULO];
-    int duracao; // duração em minutos
-} VideoInfo;
+    int duracao;
+} Video;
 
 typedef struct {
     int id;
     char nome[MAX_NOME];
-    int favoritos[MAX_FAVORITOS]; // IDs dos vídeos
+    int favoritos[MAX_FAVORITOS];
     int qtd_favoritos;
-} UsuarioInfo;
+} Usuario;
 
-// Funções auxiliares
+// Funções
 void cadastrar_video() {
-    FILE *arquivoVideo = fopen("videos.dat", "ab");
-    VideoInfo video;
+    FILE *arq = fopen("videos.dat", "ab");
+    Video v;
 
     printf("ID do vídeo: ");
-    scanf("%d", &video.id);
+    scanf("%d", &v.id);
     getchar();
 
     printf("Título: ");
-    fgets(video.titulo, MAX_TITULO, stdin);
-    strtok(video.titulo, "\n");
+    fgets(v.titulo, MAX_TITULO, stdin);
+    strtok(v.titulo, "\n");
 
     printf("Duração (min): ");
-    scanf("%d", &video.duracao);
+    scanf("%d", &v.duracao);
 
-    fwrite(&video, sizeof(VideoInfo), 1, arquivoVideo);
-    fclose(arquivoVideo);
+    fwrite(&v, sizeof(Video), 1, arq);
+    fclose(arq);
+    printf("Vídeo cadastrado com sucesso!\n");
 }
 
 void listar_videos() {
-    FILE *arquivoVideo = fopen("videos.dat", "rb");
-    VideoInfo video;
+    FILE *arq = fopen("videos.dat", "rb");
+    Video v;
 
     printf("\n--- Lista de Vídeos ---\n");
-    while (fread(&video, sizeof(VideoInfo), 1, arquivoVideo)) {
-        printf("ID: %d | Título: %s | Duração: %d min\n", video.id, video.titulo, video.duracao);
+    while (fread(&v, sizeof(Video), 1, arq)) {
+        printf("ID: %d | Título: %s | Duração: %d min\n", v.id, v.titulo, v.duracao);
     }
-    fclose(arquivoVideo);
+
+    fclose(arq);
 }
 
 void cadastrar_usuario() {
-    FILE *arquivoUsuario = fopen("usuarios.dat", "ab");
-    UsuarioInfo usuario;
+    FILE *arq = fopen("usuarios.dat", "ab");
+    Usuario u;
 
     printf("ID do usuário: ");
-    scanf("%d", &usuario.id);
+    scanf("%d", &u.id);
     getchar();
 
     printf("Nome: ");
-    fgets(usuario.nome, MAX_NOME, stdin);
-    strtok(usuario.nome, "\n");
+    fgets(u.nome, MAX_NOME, stdin);
+    strtok(u.nome, "\n");
 
     printf("Quantos vídeos favoritados (máx %d)? ", MAX_FAVORITOS);
-    scanf("%d", &usuario.qtd_favoritos);
-    if (usuario.qtd_favoritos > MAX_FAVORITOS) usuario.qtd_favoritos = MAX_FAVORITOS;
+    scanf("%d", &u.qtd_favoritos);
+    if (u.qtd_favoritos > MAX_FAVORITOS) u.qtd_favoritos = MAX_FAVORITOS;
 
-    for (int i = 0; i < usuario.qtd_favoritos; i++) {
+    for (int i = 0; i < u.qtd_favoritos; i++) {
         printf("ID do vídeo favorito %d: ", i + 1);
-        scanf("%d", &usuario.favoritos[i]);
+        scanf("%d", &u.favoritos[i]);
     }
 
-    fwrite(&usuario, sizeof(UsuarioInfo), 1, arquivoUsuario);
-    fclose(arquivoUsuario);
+    fwrite(&u, sizeof(Usuario), 1, arq);
+    fclose(arq);
+    printf("Usuário cadastrado com sucesso!\n");
 }
 
-void listar_usuarios_com_videos() {
-    FILE *arquivoUsuario = fopen("usuarios.dat", "rb");
-    FILE *arquivoVideo = fopen("videos.dat", "rb");
-    UsuarioInfo usuario;
-    VideoInfo video;
+void relatorio_usuarios() {
+    FILE *fU = fopen("usuarios.dat", "rb");
+    FILE *fV = fopen("videos.dat", "rb");
+    Usuario u;
+    Video v;
 
-    printf("\n--- Relatório de Usuários com Vídeos Favoritos ---\n");
-    while (fread(&usuario, sizeof(UsuarioInfo), 1, arquivoUsuario)) {
-        printf("Usuário: %s (ID %d)\nFavoritos:\n", usuario.nome, usuario.id);
-        for (int i = 0; i < usuario.qtd_favoritos; i++) {
-            rewind(arquivoVideo);
-            while (fread(&video, sizeof(VideoInfo), 1, arquivoVideo)) {
-                if (video.id == usuario.favoritos[i]) {
-                    printf(" - %s (ID %d)\n", video.titulo, video.id);
+    printf("\n--- Relatório de Usuários ---\n");
+
+    while (fread(&u, sizeof(Usuario), 1, fU)) {
+        printf("Usuário: %s (ID %d)\nFavoritos:\n", u.nome, u.id);
+        for (int i = 0; i < u.qtd_favoritos; i++) {
+            rewind(fV); // volta ao início do arquivo de vídeos
+            while (fread(&v, sizeof(Video), 1, fV)) {
+                if (v.id == u.favoritos[i]) {
+                    printf(" - %s (ID %d)\n", v.titulo, v.id);
                     break;
                 }
             }
@@ -96,80 +101,93 @@ void listar_usuarios_com_videos() {
         printf("\n");
     }
 
-    fclose(arquivoUsuario);
-    fclose(arquivoVideo);
+    fclose(fU);
+    fclose(fV);
 }
 
 void atualizar_video() {
-    FILE *arquivoVideo = fopen("videos.dat", "rb+");
+    FILE *arq = fopen("videos.dat", "rb+");
     int id;
-    printf("ID do vídeo para atualizar: ");
+    Video v;
+
+    printf("ID do vídeo a atualizar: ");
     scanf("%d", &id);
+    getchar();
 
-    VideoInfo video;
-
-    while (fread(&video, sizeof(VideoInfo), 1, arquivoVideo)) {
-        if (video.id == id) {
+    while (fread(&v, sizeof(Video), 1, arq)) {
+        if (v.id == id) {
             printf("Novo título: ");
-            getchar();
-            fgets(video.titulo, MAX_TITULO, stdin);
-            strtok(video.titulo, "\n");
+            fgets(v.titulo, MAX_TITULO, stdin);
+            strtok(v.titulo, "\n");
 
             printf("Nova duração: ");
-            scanf("%d", &video.duracao);
+            scanf("%d", &v.duracao);
 
-            fseek(arquivoVideo, -sizeof(VideoInfo), SEEK_CUR);
-            fwrite(&video, sizeof(VideoInfo), 1, arquivoVideo);
-            break;
+            fseek(arq, -sizeof(Video), SEEK_CUR);
+            fwrite(&v, sizeof(Video), 1, arq);
+            printf("Vídeo atualizado com sucesso!\n");
+            fclose(arq);
+            return;
         }
     }
-    fclose(arquivoVideo);
+
+    printf("Vídeo com ID %d não encontrado.\n", id);
+    fclose(arq);
 }
 
 void remover_video() {
-    FILE *arquivoVideo = fopen("videos.dat", "rb");
-    FILE *arquivoTemporario = fopen("videos_tmp.dat", "wb");
-
+    FILE *orig = fopen("videos.dat", "rb");
+    FILE *novo = fopen("videos_temp.dat", "wb");
     int id;
+    Video v;
+    int encontrado = 0;
+
     printf("ID do vídeo para remover: ");
     scanf("%d", &id);
 
-    VideoInfo video;
-    while (fread(&video, sizeof(VideoInfo), 1, arquivoVideo)) {
-        if (video.id != id) {
-            fwrite(&video, sizeof(VideoInfo), 1, arquivoTemporario);
+    while (fread(&v, sizeof(Video), 1, orig)) {
+        if (v.id != id) {
+            fwrite(&v, sizeof(Video), 1, novo);
+        } else {
+            encontrado = 1;
         }
     }
 
-    fclose(arquivoVideo);
-    fclose(arquivoTemporario);
+    fclose(orig);
+    fclose(novo);
 
-    remove("videos.dat");
-    rename("videos_tmp.dat", "videos.dat");
+    if (encontrado) {
+        remove("videos.dat");
+        rename("videos_temp.dat", "videos.dat");
+        printf("Vídeo removido com sucesso.\n");
+    } else {
+        remove("videos_temp.dat");
+        printf("Vídeo com ID %d não encontrado.\n", id);
+    }
 }
 
 void menu() {
     int opcao;
     do {
-        printf("\n--- Menu ---\n");
+        printf("\n=== MENU ===\n");
         printf("1. Cadastrar vídeo\n");
         printf("2. Cadastrar usuário\n");
         printf("3. Listar vídeos\n");
-        printf("4. Relatório de usuários com vídeos\n");
+        printf("4. Relatório de usuários\n");
         printf("5. Atualizar vídeo\n");
         printf("6. Remover vídeo\n");
         printf("0. Sair\n");
-        printf("Escolha: ");
+        printf("Opção: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
             case 1: cadastrar_video(); break;
             case 2: cadastrar_usuario(); break;
             case 3: listar_videos(); break;
-            case 4: listar_usuarios_com_videos(); break;
+            case 4: relatorio_usuarios(); break;
             case 5: atualizar_video(); break;
             case 6: remover_video(); break;
-            case 0: break;
+            case 0: printf("Saindo...\n"); break;
             default: printf("Opção inválida!\n");
         }
     } while (opcao != 0);
