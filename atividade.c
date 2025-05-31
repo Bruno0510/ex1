@@ -1,52 +1,52 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int contar_vogais(char frase[]) {
-    int i = 0, contador = 0;
-    char c;
+int contar_vogais(char texto[]) {
+    int indice = 0, qtd_vogais = 0;
+    char caractere;
 
-    while (frase[i] != '\0') {
-        c = frase[i];
-        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-            c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
-            contador++;
+    while (texto[indice] != '\0') {
+        caractere = texto[indice];
+        if (caractere == 'a' || caractere == 'e' || caractere == 'i' || caractere == 'o' || caractere == 'u' ||
+            caractere == 'A' || caractere == 'E' || caractere == 'I' || caractere == 'O' || caractere == 'U') {
+            qtd_vogais++;
         }
-        i++;
+        indice++;
     }
 
-    return contador;
+    return qtd_vogais;
 }
 
-void letra_upper(char frase[]) {
-    int i = 0;
-    int nova_palavra = 1;
+void inicial_maiucula(char texto[]) {
+    int posicao = 0;
+    int inicio_palavra = 1;
 
-    while (frase[i] != '\0') {
-        if (frase[i] == ' ') {
-            nova_palavra = 1;
-        } else if (nova_palavra && frase[i] >= 'a' && frase[i] <= 'z') {
-            frase[i] = frase[i] - 32;
-            nova_palavra = 0;
+    while (texto[posicao] != '\0') {
+        if (texto[posicao] == ' ') {
+            inicio_palavra = 1;
+        } else if (inicio_palavra && texto[posicao] >= 'a' && texto[posicao] <= 'z') {
+            texto[posicao] = texto[posicao] - 32;
+            inicio_palavra = 0;
         } else {
-            nova_palavra = 0;
+            inicio_palavra = 0;
         }
-        i++;
+        posicao++;
     }
 }
 
 int main() {
-    char frase[1000];
+    char entrada[1000];
 
     printf("Digite uma frase: ");
-    fgets(frase, sizeof(frase), stdin);
+    fgets(entrada, sizeof(entrada), stdin);
 
-    printf("Frase digitada: %s", frase);
+    printf("Frase digitada: %s", entrada);
 
-    int total_vogais = contar_vogais(frase);
-    printf("numero de vogais: %d\n", total_vogais);
+    int total = contar_vogais(entrada);
+    printf("Número de vogais: %d\n", total);
 
-    letra_upper(frase);
-    printf("Frases começando com letras maiúsculas: %s", frase);
+    inicial_maiucula(entrada);
+    printf("Frase com iniciais maiúsculas: %s", entrada);
 
     return 0;
 }
