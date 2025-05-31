@@ -54,7 +54,6 @@ void alterarValorUnitario(int codigo) {
     }
 }
 
-// (c) Retornar valor unitário
 float obterValorUnitario(int codigo) {
     int i = encontrarProdutoPorCodigo(codigo);
     if (i != -1) {
@@ -129,7 +128,6 @@ void listarProdutosSemEstoque() {
     }
 }
 
-// Menu principal
 void menu() {
     int opcao, codigo, quantidade;
     float valor;
