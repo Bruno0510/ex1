@@ -1,0 +1,74 @@
+
+---- Banco Dinheiro Certo ----
+1 - Cadastrar nova conta
+2 - Consultar saldo
+3 - Depositar
+4 - Sacar
+5 - Exibir contas
+0 - Sair
+Opcao: 1
+Tipo de conta (1-Corrente, 2-Poupanca): 1
+Numero da nova conta: 123
+Nome do cliente: João Silva
+CPF: 12345678900
+Telefone: 11999999999
+Saldo inicial: 1000.00
+Conta cadastrada com sucesso!
+
+---- Banco Dinheiro Certo ----
+1 - Cadastrar nova conta
+2 - Consultar saldo
+3 - Depositar
+4 - Sacar
+5 - Exibir contas
+0 - Sair
+Opcao: 2
+Tipo de conta (1-Corrente, 2-Poupanca): 1
+Numero da conta: 123
+Saldo da conta 123: R$ 1000.00
+
+---- Banco Dinheiro Certo ----
+1 - Cadastrar nova conta
+2 - Consultar saldo
+3 - Depositar
+4 - Sacar
+5 - Exibir contas
+0 - Sair
+Opcao: 3
+Tipo de conta (1-Corrente, 2-Poupanca): 1
+Numero da conta: 123
+Valor a depositar: 500.00
+Deposito realizado. Novo saldo: R$ 1500.00
+
+---- Banco Dinheiro Certo ----
+1 - Cadastrar nova conta
+2 - Consultar saldo
+3 - Depositar
+4 - Sacar
+5 - Exibir contas
+0 - Sair
+Opcao: 4
+Tipo de conta (1-Corrente, 2-Poupanca): 1
+Numero da conta: 123
+Valor a sacar: 200.00
+Saque realizado. Novo saldo: R$ 1300.00
+
+---- Banco Dinheiro Certo ----
+1 - Cadastrar nova conta
+2 - Consultar saldo
+3 - Depositar
+4 - Sacar
+5 - Exibir contas
+0 - Sair
+Opcao: 5
+Tipo de conta (1-Corrente, 2-Poupanca): 1
+Conta: 123 - Nome: João Silva - Telefone: 11999999999
+
+---- Banco Dinheiro Certo ----
+1 - Cadastrar nova conta
+2 - Consultar saldo
+3 - Depositar
+4 - Sacar
+5 - Exibir contas
+0 - Sair
+Opcao: 0
