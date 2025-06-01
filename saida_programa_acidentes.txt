@@ -1,0 +1,45 @@
+
+Estado com MAIOR numero de acidentes: Sao Paulo (4500 acidentes)
+Estado com MENOR numero de acidentes: Roraima (200 acidentes)
+
+Percentual de veiculos envolvidos em acidentes por estado:
+Acre: 0.42%
+Alagoas: 0.47%
+Amapa: 0.38%
+Amazonas: 0.46%
+Bahia: 0.50%
+Ceara: 0.40%
+Distrito Federal: 0.30%
+Espirito Santo: 0.40%
+Goias: 0.36%
+Maranhao: 0.45%
+Mato Grosso: 0.45%
+Mato Grosso do Sul: 0.44%
+Minas Gerais: 0.38%
+Para: 0.50%
+Paraiba: 0.43%
+Parana: 0.37%
+Pernambuco: 0.48%
+Piaui: 0.42%
+Rio de Janeiro: 0.39%
+Rio Grande do Norte: 0.36%
+Rio Grande do Sul: 0.40%
+Rondonia: 0.43%
+Roraima: 0.33%
+Santa Catarina: 0.46%
+Sao Paulo: 0.45%
+Sergipe: 0.45%
+
+Media de acidentes no pais: 1140.38
+
+Estados com acidentes acima da media nacional:
+Bahia - Acidentes: 2000
+Distrito Federal - Acidentes: 1500
+Minas Gerais - Acidentes: 2300
+Para - Acidentes: 1100
+Parana - Acidentes: 1300
+Pernambuco - Acidentes: 1600
+Rio de Janeiro - Acidentes: 2700
+Rio Grande do Sul - Acidentes: 1450
+Santa Catarina - Acidentes: 1250
+Sao Paulo - Acidentes: 4500
