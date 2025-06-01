@@ -1,0 +1,24 @@
+1. Salve o código-fonte com o nome:
+streaming.c
+
+2. Compile o programa com o GCC:
+gcc -o streaming streaming.c
+
+3. Execute o programa compilado:
+./streaming
+
+Observações:
+- O programa cria e manipula os arquivos binários:
+  - videos.dat: armazena os dados dos vídeos.
+  - usuarios.dat: armazena os dados dos usuários.
+- Durante a execução, será exibido um menu com as opções:
+  1 - Cadastrar video
+  2 - Cadastrar usuario
+  3 - Listar videos
+  4 - Listar usuarios com favoritos
+  5 - Atualizar titulo de video
+  6 - Remover video
+  0 - Sair
+
+4. Para limpar os arquivos gerados (opcional):
+rm streaming videos.dat usuarios.dat temp.dat
