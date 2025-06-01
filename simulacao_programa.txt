@@ -1,0 +1,102 @@
+
+--- MENU ---
+1 - Cadastrar produto
+2 - Alterar valor unitario
+3 - Consultar valor unitario
+4 - Consultar quantidade em estoque
+5 - Vender produto
+6 - Atualizar estoque
+7 - Listar produtos
+8 - Listar produtos com estoque zero
+0 - Sair
+Escolha: 1
+Codigo: 101
+Descricao: Caneta Azul
+Valor unitario: 2.50
+Quantidade em estoque: 100
+Produto cadastrado com sucesso!
+
+--- MENU ---
+1 - Cadastrar produto
+2 - Alterar valor unitario
+3 - Consultar valor unitario
+4 - Consultar quantidade em estoque
+5 - Vender produto
+6 - Atualizar estoque
+7 - Listar produtos
+8 - Listar produtos com estoque zero
+0 - Sair
+Escolha: 1
+Codigo: 102
+Descricao: Caderno Universitario
+Valor unitario: 15.75
+Quantidade em estoque: 50
+Produto cadastrado com sucesso!
+
+--- MENU ---
+1 - Cadastrar produto
+2 - Alterar valor unitario
+3 - Consultar valor unitario
+4 - Consultar quantidade em estoque
+5 - Vender produto
+6 - Atualizar estoque
+7 - Listar produtos
+8 - Listar produtos com estoque zero
+0 - Sair
+Escolha: 7
+Codigo: 101 - Descricao: Caneta Azul
+Codigo: 102 - Descricao: Caderno Universitario
+
+--- MENU ---
+1 - Cadastrar produto
+2 - Alterar valor unitario
+3 - Consultar valor unitario
+4 - Consultar quantidade em estoque
+5 - Vender produto
+6 - Atualizar estoque
+7 - Listar produtos
+8 - Listar produtos com estoque zero
+0 - Sair
+Escolha: 5
+Codigo do produto: 101
+Quantidade desejada: 20
+Compra realizada. Total a pagar: R$ 50.00
+
+--- MENU ---
+1 - Cadastrar produto
+2 - Alterar valor unitario
+3 - Consultar valor unitario
+4 - Consultar quantidade em estoque
+5 - Vender produto
+6 - Atualizar estoque
+7 - Listar produtos
+8 - Listar produtos com estoque zero
+0 - Sair
+Escolha: 4
+Codigo do produto: 101
+Quantidade em estoque: 80
+
+--- MENU ---
+1 - Cadastrar produto
+2 - Alterar valor unitario
+3 - Consultar valor unitario
+4 - Consultar quantidade em estoque
+5 - Vender produto
+6 - Atualizar estoque
+7 - Listar produtos
+8 - Listar produtos com estoque zero
+0 - Sair
+Escolha: 8
+
+--- MENU ---
+1 - Cadastrar produto
+2 - Alterar valor unitario
+3 - Consultar valor unitario
+4 - Consultar quantidade em estoque
+5 - Vender produto
+6 - Atualizar estoque
+7 - Listar produtos
+8 - Listar produtos com estoque zero
+0 - Sair
+Escolha: 0
+Saindo...
